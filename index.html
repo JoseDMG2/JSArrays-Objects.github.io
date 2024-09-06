@@ -1,69 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Title</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional Bootstrap JS and dependencies (jQuery and Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-
 <body>
-    <h1>Arreglos y Objetos</h1>
-    <p>JavaScript</p>
-    <script>
-        let frutas = ["manzanas", "fresa", "cereza"];
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">Arreglos y Objetos</h1>
+        <p class="text-center">JavaScript</p>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        Arreglos
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Frutas</h5>
+                        <div id="frutasOutput" class="card-text"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        Ejercicios
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Semana</h5>
+                        <div id="semanaOutput" class="card-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div id="frutasConOutput" class="card">
+                    <div class="card-header">
+                        Frutas con 's'
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div id="matrizOutput" class="card">
+                    <div class="card-header">
+                        Matriz
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="iteracionesOutput" class="mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Iteraciones
+                </div>
+                <div class="card-body">
+                    <div class="card-text"></div>
+                </div>
+            </div>
+        </div>
 
-        document.write(frutas);
-        document.write("<br>", frutas.length);
-        frutas.push("naranja");
-        document.write("<br>", frutas);
-        frutas.pop();
-        document.write("<br>", frutas);
-        frutas.shift();
-        document.write("<br>", frutas);
-        frutas.unshift("platano");
-        document.write("<br>", frutas);
-        frutas.forEach(frutas => document.write("<br>", frutas));
-        document.write("<br>");
-        let frutasMayusculas = frutas.map(fruta => fruta.toUpperCase());
-        document.write("<br>", frutasMayusculas);
-        //Ejercicio1
-        let semana = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
-        document.write("<br>", semana);
-        let semanaMayusculas = semana.map(semanas => semanas.toUpperCase());
-        document.write("<br>", semanaMayusculas);
-        //Ejercicio2
-        semana.forEach(semana => document.write("<br>", semana));
+        <div id="personaOutput">
+            <div class="card">
+                <div class="card-header">
+                    Objetos
+                </div>
+                <div class="card-body">
+                    <div class="card-text"></div>
+                </div>
+            </div>
+        </div>
 
-        let frutasCon = frutas.filter(fruta => fruta.includes('s'));
-
-        document.write("<br>", frutasCon);
-
-        //Arreglos bidimensionales
-        let matriz = [
-            [1, 2, 3],
-            [4, 5, 6], //1
-            [7, 8, 9]
-        ];
-        let elemento = matriz[1][2];
-        document.write("<br>", elemento);
-
-        // Iteraciones
-        for (let i = 0; i < frutas.length; i++) {
-            document.write("<br>", frutas[i]);
-        }
-
-        //Objetos
-        let persona = {
-            nombre: "Eusebio",
-            edad: 85,
-            saludar: function () {
-                document.write("<br>Hola, soy " + this.nombre);
+        <script>
+            let frutas = ["manzanas", "fresa", "cereza"];
+            let frutasOutput = document.getElementById('frutasOutput');
+            let semanaOutput = document.getElementById('semanaOutput');
+            let frutasConOutput = document.getElementById('frutasConOutput').querySelector('.card-text');
+            let matrizOutput = document.getElementById('matrizOutput').querySelector('.card-text');
+            let iteracionesOutput = document.getElementById('iteracionesOutput').querySelector('.card-text');
+            let personaOutput = document.getElementById('personaOutput').querySelector('.card-text');
+            
+            frutasOutput.innerHTML += `<p>${frutas.join(', ')}</p>`;
+            frutasOutput.innerHTML += `<p>Length: ${frutas.length}</p>`;
+            frutas.push("naranja");
+            frutasOutput.innerHTML += `<p>After push: ${frutas.join(', ')}</p>`;
+            frutas.pop();
+            frutasOutput.innerHTML += `<p>After pop: ${frutas.join(', ')}</p>`;
+            frutas.shift();
+            frutasOutput.innerHTML += `<p>After shift: ${frutas.join(', ')}</p>`;
+            frutas.unshift("platano");
+            frutasOutput.innerHTML += `<p>After unshift: ${frutas.join(', ')}</p>`;
+            frutas.forEach(fruta => frutasOutput.innerHTML += `<p>${fruta}</p>`);
+            frutasOutput.innerHTML += `<p>Mayúsculas: ${frutas.map(fruta => fruta.toUpperCase()).join(', ')}</p>`;
+            
+            // Ejercicio1
+            let semana = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+            semanaOutput.innerHTML += `<p>${semana.join(', ')}</p>`;
+            semanaOutput.innerHTML += `<p>${semana.map(semanas => semanas.toUpperCase()).join(', ')}</p>`;
+            
+            // Ejercicio2
+            semana.forEach(dia => semanaOutput.innerHTML += `<p>${dia}</p>`);
+            
+            let frutasCon = frutas.filter(fruta => fruta.includes('s'));
+            frutasConOutput.innerHTML += `<p>${frutasCon.join(', ')}</p>`;
+            
+            // Arreglos bidimensionales
+            let matriz = [
+                [1, 2, 3],
+                [4, 5, 6],
+                [7, 8, 9]
+            ];
+            let elemento = matriz[1][2];
+            matrizOutput.innerHTML += `<p>Elemento: ${elemento}</p>`;
+            
+            // Iteraciones
+            for(let i = 0; i < frutas.length; i++){
+                iteracionesOutput.innerHTML += `<p>${frutas[i]}</p>`;
             }
-        };
-        persona.saludar();
-    </script>
-
+            
+            // Objetos
+            let persona = {
+                nombre: "Eusebio",
+                edad: 85,
+                saludar: function () {
+                    personaOutput.innerHTML += `<p>Hola, soy ${this.nombre}</p>`;
+                }
+            };
+            persona.saludar();
+        </script>
+    </div>
 </body>
 </html>
-
