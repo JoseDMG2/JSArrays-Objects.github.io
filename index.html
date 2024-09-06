@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title</title>
+</head>
+
+<body>
+    <h1>Arreglos y Objetos</h1>
+    <p>JavaScript</p>
+    <script>
+        let frutas = ["manzanas", "fresa", "cereza"];
+
+        document.write(frutas);
+        document.write("<br>", frutas.length);
+        frutas.push("naranja");
+        document.write("<br>", frutas);
+        frutas.pop();
+        document.write("<br>", frutas);
+        frutas.shift();
+        document.write("<br>", frutas);
+        frutas.unshift("platano");
+        document.write("<br>", frutas);
+        frutas.forEach(frutas => document.write("<br>", frutas));
+        document.write("<br>");
+        let frutasMayusculas = frutas.map(fruta => fruta.toUpperCase());
+        document.write("<br>", frutasMayusculas);
+        //Ejercicio1
+        let semana = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+        document.write("<br>", semana);
+        let semanaMayusculas = semana.map(semanas => semanas.toUpperCase());
+        document.write("<br>", semanaMayusculas);
+        //Ejercicio2
+        semana.forEach(semana => document.write("<br>", semana));
+
+        let frutasCon = frutas.filter(fruta => fruta.includes('s'));
+
+        document.write("<br>", frutasCon);
+
+        //Arreglos bidimensionales
+        let matriz = [
+            [1, 2, 3],
+            [4, 5, 6], //1
+            [7, 8, 9]
+        ];
+        let elemento = matriz[1][2];
+        document.write("<br>", elemento);
+
+        // Iteraciones
+        for (let i = 0; i < frutas.length; i++) {
+            document.write("<br>", frutas[i]);
+        }
+
+        //Objetos
+        let persona = {
+            nombre: "Eusebio",
+            edad: 85,
+            saludar: function () {
+                document.write("<br>Hola, soy " + this.nombre);
+            }
+        };
+        persona.saludar();
+    </script>
+
+</body>
+</html>
+
